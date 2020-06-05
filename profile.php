@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'functions/functions.php';
 require 'functions/logout.php';
 session_start();
@@ -34,7 +34,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
             z-index: 1;
             height: 30px;
             width: 100%;
-            background-color: #FAFAFA;  
+            background-color: #FAFAFA;
             position: fixed;
             text-align: right;
             padding-top: 10px;
@@ -59,13 +59,13 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
   </div>
 
         <?php
-         if($flag==0){
+         if($flag==0){                                                      //flag to see if we are seeing our profile
           $sql2 = "SELECT * from users where user_id=\"".$_SESSION['user_id']."\";";
           $conn = connect();
           $query2 = mysqli_query($conn, $sql2);
-          
+
           $row2 = mysqli_fetch_assoc($query2);
-          
+
           echo "<div id=\"header\"><br><br>";
           echo "<div id=\"dpdiv\">";
             echo "<img id=\"dp\" src=\"".$row2['user_dp']."\" alt=\'Profile Picture\'>";
@@ -74,6 +74,33 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
               echo "<p>".$row2['user_username']."</p>";
               echo "<h3>".$row2['user_firstname']." ".$row2['user_lastname']."</h3>";
             echo '</div>';
+            echo'
+            <div id=\"container\">
+            <form class=\"form-horizontal\" method=\"post\" enctype=\"multipart/form-data\">
+              <h1>Edit Profile</h1><br>
+                <div class=\"form-group\">
+                  <label class=\"control-label col-sm-2\" for=\"username\">Username:</label>
+                  <div class=\"col-sm-10\">
+                    <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" placeholder=\"Enter New UserName\">
+                  </div>
+                </div>
+                <div class=\"form-group\">
+                  <label class=\"control-label col-sm-2\" for=\"dp\">Display Picture:</label>
+                  <div class=\"col-sm-10\">
+                    <input type=\"text\" class=\"form-control\" id=\"dp\" name=\"dp\" placeholder=\"Display Picture Link\">
+                  </div>
+                </div>
+                <div class=\"form-group\">
+                  <div class=\"col-sm-offset-2 col-sm-10\">
+                    <input type=\"submit\" class=\"btn btn-default\" id=\"submit\" name=\"Make Changes\" value=\"Make Changes\"></input>
+                  </div>
+                </div>
+              </form>
+              </div>';
+
+
+
+
           echo '</div>';
           echo '<br>';
           echo '<hr style=\'color: #cccccc;\'>';
@@ -85,7 +112,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
             ?> <script>
             document.getElementById("notfound").innerHTML="No posts.";
             </script> <?php
-          } 
+          }
           else{
             while($row = mysqli_fetch_assoc($query)){
               echo '<div class=\'post\'>';
@@ -99,9 +126,9 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
           $sql2 = "SELECT * from users where user_id=\"".$current_id."\";";
           $conn = connect();
           $query2 = mysqli_query($conn, $sql2);
-          
+
           $row2 = mysqli_fetch_assoc($query2);
-          
+
           echo "<div id=\"header\"><br><br>";
           echo "<div id=\"dpdiv\">";
             echo "<img id=\"dp\" src=\"".$row2['user_dp']."\" alt=\'Profile Picture\'>";
@@ -121,7 +148,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
             ?> <script>
             document.getElementById("notfound").innerHTML="No posts.";
             </script> <?php
-          } 
+          }
           else{
             while($row = mysqli_fetch_assoc($query)){
               echo '<div class=\'post\'>';
@@ -133,7 +160,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
         }
         ?>
 
- 
+
   <div id="footer">
   <form method=post>
         <input type="submit" name="Logout" value="Logout"></input>
