@@ -10,7 +10,6 @@ html {
 #header{
   padding-top: 50px;
   display: flex;
-  width: 800px;
   border: 1px solid black;
   overflow: hidden;
   text-align: center;
@@ -26,7 +25,7 @@ body {
   margin: 0 auto;
 }
 #topbar{
-  background-color: #FAFAFA;  
+  background-color: #FAFAFA;
   border-bottom: 0.5px solid #ccc;
   position: fixed;
   width: 100%;
@@ -88,7 +87,7 @@ h3{
 }
 
 
-/* 
+/*
 #header{
   border-bottom: 2px solid #cccccc;
 } */

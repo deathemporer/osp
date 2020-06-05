@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'functions/functions.php';
 require 'functions/logout.php';
 session_start();
@@ -10,7 +10,7 @@ $temp = $_SESSION['user_id'];
 session_destroy();
 session_start();
 $_SESSION['user_id'] = $temp;
-ob_start(); 
+ob_start();
 // Establish Database Connection
 $conn = connect();
 ?>
@@ -34,7 +34,7 @@ $conn = connect();
             z-index: 1;
             height: 30px;
             width: 100%;
-            background-color: #FAFAFA;  
+            background-color: #FAFAFA;
             position: fixed;
             text-align: right;
             padding-top: 10px;
@@ -58,9 +58,9 @@ $conn = connect();
 		<a href="recents.php" id="recentbut"><img class ="icon" src="public\images\heart.png"></a>
 		<a href="profile.php" id="profbut"><img class ="icon" src="public\images\user.png"></a>
 	</div>
-	
-	
-	
+
+
+
 	<div id="body">
 		<br>
 		<span id="notfound"></span>
@@ -75,7 +75,7 @@ $conn = connect();
 			?> <script>
 			document.getElementById("notfound").innerHTML="No posts.";
 			</script> <?php
-		} 
+		}
 		else{
 			while($row = mysqli_fetch_assoc($query)){
 				$pid = $row['post_id'];
@@ -100,7 +100,7 @@ $conn = connect();
 					echo "<p style=\"text-align: center;\">".$row['post_caption']."</p>";
 				echo '</div>';
 				echo '<div id=\'likecomment\'>';
-					
+
 					//echo '<div id=\'likes\'>';
 					//	echo '<div id=\'likebutton\'><button id=\'like\' onclick=\'pictureChange()\'><img id=\'theImage\' class=\'icon\' src=\'public\images\heart2.png\'></button>';
 					//	echo '</div>';
@@ -110,7 +110,7 @@ $conn = connect();
 					//code for comments
 					$sql3 = "Select * from comments where post_id=".$row['post_id'].";";
 					$row4 = mysqli_query($conn, $sql3);
-					
+
 						echo '<ul type=\'none\'>';
 						while($row2 = mysqli_fetch_assoc($row4)){
 							$sql4 = "select user_username from users where user_id=\"".$row2['comment_by']."\"";
@@ -136,7 +136,7 @@ $conn = connect();
 			echo '<br><br><br>';
 					}
 		echo '</div>';
-		
+
 		}
 	?>
 

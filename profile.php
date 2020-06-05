@@ -74,30 +74,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
               echo "<p>".$row2['user_username']."</p>";
               echo "<h3>".$row2['user_firstname']." ".$row2['user_lastname']."</h3>";
             echo '</div>';
-            echo'
-            <div id=\"container\">
-            <form class=\"form-horizontal\" method=\"post\" enctype=\"multipart/form-data\">
-              <h1>Edit Profile</h1><br>
-                <div class=\"form-group\">
-                  <label class=\"control-label col-sm-2\" for=\"username\">Username:</label>
-                  <div class=\"col-sm-10\">
-                    <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" placeholder=\"Enter New UserName\">
-                  </div>
-                </div>
-                <div class=\"form-group\">
-                  <label class=\"control-label col-sm-2\" for=\"dp\">Display Picture:</label>
-                  <div class=\"col-sm-10\">
-                    <input type=\"text\" class=\"form-control\" id=\"dp\" name=\"dp\" placeholder=\"Display Picture Link\">
-                  </div>
-                </div>
-                <div class=\"form-group\">
-                  <div class=\"col-sm-offset-2 col-sm-10\">
-                    <input type=\"submit\" class=\"btn btn-default\" id=\"submit\" name=\"Make Changes\" value=\"Make Changes\"></input>
-                  </div>
-                </div>
-              </form>
-              </div>';
-
+            echo'<button><a href=\'/edit.php\'</a>Edit</button>';
 
 
 
@@ -162,7 +139,7 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
 
 
   <div id="footer">
-  <form method=post>
+  <form method=post action="logout.php">
         <input type="submit" name="Logout" value="Logout"></input>
 	</form>
     </div>
@@ -170,9 +147,4 @@ if(isset($_GET['id']) && $_GET['id'] != $_SESSION['user_id']) {
 
 </html>
 
-<?php
-	$conn = connect();
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		logout();
-	}
-?>
+

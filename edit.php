@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'functions/functions.php';
 require 'functions/logout.php';
 session_start();
@@ -25,13 +25,22 @@ $conn = connect();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <style>
+    body {
+  background: #B3FFAB;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #12FFF7, #B3FFAB);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #12FFF7, #B3FFAB);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Montserrat', sans-serif;
+}
   #footer{
             left: 0;
             bottom: 0;
             z-index: 1;
             height: 30px;
             width: 100%;
-            background-color: #FAFAFA;  
+            background-color: #FAFAFA;
             position: fixed;
             text-align: right;
             padding-top: 10px;
@@ -77,7 +86,7 @@ $conn = connect();
     </form>
     </div>
   <div id="footer">
-  <form method=post>
+  <form method=post laction="logout.php">
         <input type="submit" name="Logout" value="Logout" action=logout.php></input>
 	</form>
     </div>
@@ -91,7 +100,10 @@ $conn = connect();
         $username = $_POST['username'];
         $dp = $_POST['dp'];
         $uid = $_SESSION['user_id'];
+        if($dp!='')
         $sql = "UPDATE users set user_username=".$username.", user_dp=".$dp." where user_id=".$uid.";";
+        else
+        $sql = "UPDATE users set user_username=".$username." where user_id=".$uid.";";
         $query = mysqli_query($conn, $sql);
 	}
 ?>
